@@ -15,7 +15,5 @@ ADD . /app
 WORKDIR /app
 
 # Install requiremets:
-RUN poetry install
-
-# Run app:
-CMD ["python", "server/__init__.py"]
+RUN poetry export -f requirements.txt --output requirements.txt && \
+    pip install -r requirements.txt
