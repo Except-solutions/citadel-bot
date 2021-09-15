@@ -17,3 +17,5 @@ services:
       context: .
     volumes:
       - .:/app
+    env_file:
+      .env
