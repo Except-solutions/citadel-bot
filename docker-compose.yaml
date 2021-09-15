@@ -1,0 +1,19 @@
+version: '3.9'
+
+x-restart-policy: &restart_policy
+  restart: unless-stopped
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: citadel
+      MONGO_INITDB_ROOT_PASSWORD: citadel
+
+  citadel-bot:
+    <<: *restart_policy
+    build:
+      context: .
+    volumes:
+      - .:/app
