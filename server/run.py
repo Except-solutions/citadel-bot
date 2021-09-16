@@ -2,20 +2,27 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 
-from server.modules.handlers import BASE_COMMAND_HANDLERS
+from server.modules.handlers import COMMAND_HANDLERS, TEXT_HANDLERS
 from server.settings.dev import settings
 
 
-def register_handlers(dispatcher: Dispatcher) -> None:
+def register_command_handlers(dispatcher: Dispatcher) -> None:
     """Register main handlers."""
-    dispatcher.register_message_handler(BASE_COMMAND_HANDLERS['start'], commands={'start', 'restart'})
+    dispatcher.register_message_handler(COMMAND_HANDLERS['start'], commands={'start', 'restart'})
+
+
+def register_text_handlers(dispatcher: Dispatcher) -> None:
+    dispatcher.register_message_handler(TEXT_HANDLERS['randomizer'][0], TEXT_HANDLERS['randomizer'][1])
+    dispatcher.register_message_handler(TEXT_HANDLERS['random_boobs'][0], TEXT_HANDLERS['random_boobs'][1])
 
 
 async def main() -> None:
     """Bot started here."""
-    bot = Bot(token=settings.bot_token)
-    dispatcher = Dispatcher(bot=bot)
-    register_handlers(dispatcher)
+    bot: Bot = Bot(token=settings.bot_token)
+    dispatcher: Dispatcher = Dispatcher(bot=bot)
+
+    register_command_handlers(dispatcher)
+    register_text_handlers(dispatcher)
     try:
         await dispatcher.start_polling()
     finally:
