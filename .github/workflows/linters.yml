@@ -1,0 +1,35 @@
+name: lint
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    - name: Install poetry
+      uses: abatilo/actions-poetry@v2.0.0
+      with:
+        poetry-version: 1.1.8
+
+    - name: Deps install
+      run: |
+        poetry install
+
+    - name: flake8
+      run: |
+        poetry run flake8 server
+
+    - name: isort
+      run: |
+        poetry run isort server --check
+
+    - name: mypy
+      run: |
+        export PYTHONPATH=$(pwd):$(pwd)/src
+        poetry run mypy server --config mypy.ini
