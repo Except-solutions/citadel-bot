@@ -7,11 +7,12 @@ from server.settings.dev import settings
 
 
 def register_command_handlers(dispatcher: Dispatcher) -> None:
-    """Register main handlers."""
+    """Telegram commands msg."""
     dispatcher.register_message_handler(COMMAND_HANDLERS['start'], commands={'start', 'restart'})
 
 
 def register_text_handlers(dispatcher: Dispatcher) -> None:
+    """Telegram text msg."""
     dispatcher.register_message_handler(TEXT_HANDLERS['randomizer'][0], TEXT_HANDLERS['randomizer'][1])
     dispatcher.register_message_handler(TEXT_HANDLERS['random_boobs'][0], TEXT_HANDLERS['random_boobs'][1])
 

@@ -7,5 +7,5 @@ async def start_handler(event: types.Message) -> None:
     """/start handler."""
     await event.answer(
         'Hi! 👽',
-        reply_markup=start_kb
+        reply_markup=start_kb,
     )

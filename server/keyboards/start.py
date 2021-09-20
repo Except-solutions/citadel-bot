@@ -1,6 +1,4 @@
-from aiogram.types import (
-    ReplyKeyboardMarkup,
-)
+from aiogram.types import ReplyKeyboardMarkup
 
 from server.keyboards.buttons import randomizer
 

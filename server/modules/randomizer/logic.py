@@ -1,37 +1,45 @@
-from lambdas import _
 from random import randint
-from asyncio import get_event_loop
+
 import httpx
+from lambdas import _
 from more_itertools import first
-from returns.future import future_safe, Future
-from returns.io import IOResultE
+from returns.future import future_safe
+from returns.io import IOResult, IOSuccess
 from returns.pipeline import flow
+from returns.unsafe import unsafe_perform_io
 
 from server.settings.dev import settings
 
-DEFAULT_PIC = 'http://api.oboobs.ru/boobs/1'
-
-
-def sync_request(coro):
-    return Future(coro.awaitable)
+DEFAULT_PIC: str = f'boobs_preview/{settings.start_boob_id}.jpg'
 
 
 @future_safe
-async def _make_request_boobs() -> IOResultE[str]:
-    return flow(
-        randint(0, 10330),
+async def _make_boobs_request(boob_id: str) -> list[dict[str, str]]:
+    async with httpx.AsyncClient(timeout=5) as client:
+        response = await client.get(boob_id)
+        response.raise_for_status()
+        return response.json()
+
+
+async def _get_random_boobs() -> IOResult[list[dict[str, str]], Exception]:
+    return await flow(
+        randint(settings.start_boob_id, settings.stop_boob_id),
         lambda boob_id: f'{settings.boobs_api}{boob_id}',
-        httpx.Client().get,
-        sync_request,  #  Todo unwrap Future and continue flow
-        first,
-        _['preview']
+        _make_boobs_request,
     )
 
 
-async def get_random_boobs():
-    io_boobs_result = await _make_request_boobs()
-    return io_boobs_result.lash(
-        lambda _: IOSuccess(DEFAULT_PIC),  # type: ignore
-    ).compose_result(
-        lambda pic_url: f'http://media.oboobs.ru/{pic_url.unwrap()}',  # type: ignore
+async def get_random_boobs() -> str:
+    io_boobs = await _get_random_boobs()
+    return unsafe_perform_io(
+        io_boobs.lash(
+            lambda _: IOSuccess([{'preview': DEFAULT_PIC}])
+        ).map(
+            lambda result: flow(
+                result,
+                first,
+                _['preview'],
+                lambda preview: f'http://media.oboobs.ru/{preview}',
+            )
+        ).unwrap()
     )

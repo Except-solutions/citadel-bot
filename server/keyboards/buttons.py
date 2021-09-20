@@ -1,10 +1,4 @@
-from aiogram.types import KeyboardButton
-from aiogram.types import (
-
-    ReplyKeyboardMarkup,
-
-)
-
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 RANDOMIZER_TXT: str = 'Рандомайзер 🤘'
 randomizer: KeyboardButton = KeyboardButton(RANDOMIZER_TXT)
