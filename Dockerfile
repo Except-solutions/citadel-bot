@@ -11,7 +11,7 @@ COPY poetry.lock /app/poetry.lock
 COPY pyproject.toml /app/pyproject.toml
 
 # Add app
-ADD . /app
+COPY . /app
 WORKDIR /app
 ENV PYTHONPATH /app
 
