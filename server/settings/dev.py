@@ -19,5 +19,8 @@ class Settings(BaseSettings):
     cats_api: str = Field('http://aws.random.cat/meow', env='CATS_API')
     default_cat: str = 'https://purr.objects-us-east-1.dream.io/i/AyAgs.jpg'
 
+    anime_api: str = 'https://api.waifu.pics/sfw/'
+    default_anime: str = 'https://i.waifu.pics/4d8jVu4.jpg'
+
 
 settings = Settings()
