@@ -26,3 +26,6 @@ randomizer_kb.row(back_to_start_btn, random_anime_btn)
 ROLL_TXT: str = 'ROLL 🤘'
 roll_btn: KeyboardButton = KeyboardButton(ROLL_TXT)
 roll_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(selective=True)
+
+roll_kb.row(KeyboardButton('🎲'), KeyboardButton('🎯'), KeyboardButton('⚽'), KeyboardButton('🎰'))
+roll_kb.row(back_to_start_btn)
