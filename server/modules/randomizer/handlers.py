@@ -20,7 +20,7 @@ from server.modules.randomizer.cat_logic import get_random_cat
 
 @dp.message_handler(simple_text_filter(RANDOMIZER_TXT))
 async def randomizer(event: types.Message):
-    await event.answer(
+    await event.reply(
         'Шо будем рандомить:',
         reply_markup=randomizer_kb,
     )

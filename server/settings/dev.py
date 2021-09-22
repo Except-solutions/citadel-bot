@@ -5,9 +5,10 @@ class Settings(BaseSettings):
     """Bot settings dev environment."""
 
     bot_token: str = Field(env='BOT_TOKEN')
+    mongo_uri: str = Field('mongodb://citadel:citadel@mongo:27017', env='MONGO_URI')
 
     boobs_api: str = Field('http://api.oboobs.ru/boobs', env='BOOBS_API')
-    boobs_media: str = Field('http://api.oboobs.ru/boobs', env='BOOBS_API')
+    boobs_media: str = Field('http://api.oboobs.ru/boobs', env='BOOBS_MEDIA')
     start_boob_id: int = 10000
     stop_boob_id: int = 15000
 
