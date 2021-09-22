@@ -13,7 +13,7 @@ RANDOM_BOOBS_TXT: str = 'Вот они сиське 🧜‍♀️'
 random_boobs_btn: KeyboardButton = KeyboardButton(RANDOM_BOOBS_TXT)
 
 
-RANDOM_BUTT_TXT: str = 'То с чего срут 👃'
+RANDOM_BUTT_TXT: str = 'Жэпы 👃'
 random_butt_btn: KeyboardButton = KeyboardButton(RANDOM_BUTT_TXT)
 
 RANDOM_CAT_TXT: str = 'КОТэтэр 😽'
