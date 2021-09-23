@@ -1,7 +1,6 @@
 # citadel-bot
 
-[![Dev lint:](https://github.com/Except-solutions/citadel-bot/actions/workflows/linters.yml/badge.svg?branch=dev)](https://github.com/Except-solutions/citadel-bot/actions/workflows/linters.yml)
-
+[![lint](https://github.com/Except-solutions/citadel-bot/actions/workflows/linters.yml/badge.svg)](https://github.com/Except-solutions/citadel-bot/actions/workflows/linters.yml)
 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-3.svg)](https://github.com/wemake-services/wemake-python-styleguide)
