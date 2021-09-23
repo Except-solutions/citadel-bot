@@ -3,8 +3,8 @@ from pymongo import ASCENDING, TEXT
 
 
 class UserDoc(Model):
-    telegram_id: int = Field(unique=True)
-    username: str = Field(unique=True)
+    telegram_id: int
+    username: str
     is_admin: bool = False
 
 

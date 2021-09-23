@@ -29,3 +29,6 @@ roll_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(selective=True)
 
 roll_kb.row(KeyboardButton('🎲'), KeyboardButton('🎯'), KeyboardButton('⚽'), KeyboardButton('🎰'))
 roll_kb.row(back_to_start_btn)
+
+FOTD_TXT: str = 'Пидор дня 👨‍❤️‍👨'
+fotd_btn: KeyboardButton = KeyboardButton(FOTD_TXT)
