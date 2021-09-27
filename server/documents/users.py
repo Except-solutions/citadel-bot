@@ -1,4 +1,4 @@
-from odmantic import AIOEngine, Field, Model
+from odmantic import AIOEngine, Model
 from pymongo import ASCENDING, TEXT
 
 
