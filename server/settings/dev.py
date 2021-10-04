@@ -23,5 +23,12 @@ class Settings(BaseSettings):
     anime_api: str = 'https://api.waifu.pics/sfw/'
     default_anime: str = 'https://i.waifu.pics/4d8jVu4.jpg'
 
+    group_id: str
+    dobloe_utlo_pic: str = (
+        'https://sun9-51.userapi.com'
+        '/impg/FycA4k01IxAzWzd5wOxPW0VMsafzdNKDIKbfdQ/4j1LW1DvV9A.jpg'
+        '?size=550x524&quality=96&sign=ece870656fba639ed62150172720f235&type=album'
+    )
+
 
 settings = Settings()

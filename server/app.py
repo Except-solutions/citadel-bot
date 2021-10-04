@@ -13,4 +13,5 @@ async def on_startup(dispatcher):
     await user_doc_index(engine=engine)
 
 if __name__ == '__main__':
+    scheduler.start()
     executor.start_polling(dp, on_startup=on_startup)
