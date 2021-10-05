@@ -4,4 +4,4 @@ docker-compose.yaml
 Dockerfile
 config/.env
 .idea
-mongo
+etc

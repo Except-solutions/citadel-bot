@@ -14,7 +14,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=citadel
     volumes:
       - ./config/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./mongo:/data/db
+      - ./etc/mongo:/data/db
 
   citadel-bot:
     build:

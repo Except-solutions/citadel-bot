@@ -23,13 +23,13 @@ jobs:
 
     - name: flake8
       run: |
-        poetry run flake8 server
+        poetry run task flake
 
     - name: isort
       run: |
-        poetry run isort server --check
+        poetry run task isort-lint
 
     - name: mypy
       run: |
         export PYTHONPATH=$(pwd):$(pwd)/src
-        poetry run mypy server --config mypy.ini
+        poetry run task mypy --config mypy.ini

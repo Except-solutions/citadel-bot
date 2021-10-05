@@ -2,7 +2,10 @@
 name = "citadel-bot"
 version = "0.1.0"
 description = "Citadel bot"
-authors = ["goddesseyes <goddesseyes@protonmail.com>"]
+authors = [
+    "goddesseyes <goddesseyes@protonmail.com>",
+    "dexofan <fadeddexofan@gmail.com>",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
