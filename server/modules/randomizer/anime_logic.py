@@ -1,5 +1,5 @@
 import httpx
-from lambdas import _
+from placeholder import _
 from returns.future import future_safe
 from returns.io import IOResult, IOSuccess
 from returns.pipeline import flow
@@ -26,13 +26,4 @@ async def _get_random_anime(category: str) -> IOResult[dict[str, str], Exception
 
 async def get_random_anime(category: str) -> str:
     cat_io = await _get_random_anime(category)
-    return unsafe_perform_io(
-        cat_io.lash(
-            lambda _: IOSuccess({'url': settings.default_anime})
-        ).map(
-            lambda result: flow(
-                result,
-                _['url'],
-            )
-        ).unwrap()
-    )
+    return unsafe_perform_io(cat_io.lash(lambda _: IOSuccess({'url': settings.default_anime})).map(_['url']).unwrap())

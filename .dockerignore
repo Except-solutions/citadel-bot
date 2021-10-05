@@ -2,6 +2,6 @@ README.md
 .gitignore
 docker-compose.yaml
 Dockerfile
-.env
+config/.env
 .idea
 mongo

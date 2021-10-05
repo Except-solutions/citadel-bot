@@ -1,8 +1,19 @@
+from pathlib import Path
+
 from pydantic import BaseSettings, Field
+
+PROJECT_ROOT = Path(__file__).parent.parent
+BASE_DIR = PROJECT_ROOT.parent
 
 
 class Settings(BaseSettings):
     """Bot settings dev environment."""
+
+    class Config:  # noqa: WPS431
+        env_file = BASE_DIR.joinpath('config/.env')
+        env_file_encoding = 'utf-8'
+        case_sensitive = False
+        use_enum_values = True
 
     bot_token: str = Field(env='BOT_TOKEN')
     mongo_uri: str = Field('mongodb://citadel:citadel@mongo:27017', env='MONGO_URI')
@@ -20,8 +31,13 @@ class Settings(BaseSettings):
     cats_api: str = Field('http://aws.random.cat/meow', env='CATS_API')
     default_cat: str = 'https://purr.objects-us-east-1.dream.io/i/AyAgs.jpg'
 
+    dogs_api: str = Field('https://random.dog/woof.json', env='DOGS_API')
+    default_dog: str = 'https://random.dog/5a34778b-ea6a-4e2f-8695-c35c7a665ad1.jpg'
+
     anime_api: str = 'https://api.waifu.pics/sfw/'
     default_anime: str = 'https://i.waifu.pics/4d8jVu4.jpg'
+
+    dvach_url: str = Field('https://2ch.hk', env='DVACH_URL')
 
     group_id: str
     dobloe_utlo_pic: str = (

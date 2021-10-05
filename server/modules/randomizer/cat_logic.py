@@ -1,9 +1,7 @@
-
 import httpx
-from lambdas import _
+from placeholder import _
 from returns.future import future_safe
 from returns.io import IOSuccess
-from returns.pipeline import flow
 from returns.unsafe import unsafe_perform_io
 
 from server.settings.dev import settings
@@ -19,13 +17,4 @@ async def _make_cat_request() -> dict[str, str]:
 
 async def get_random_cat() -> str:
     cat_io = await _make_cat_request()
-    return unsafe_perform_io(
-        cat_io.lash(
-            lambda _: IOSuccess({'file': settings.default_cat})
-        ).map(
-            lambda result: flow(
-                result,
-                _['file'],
-            )
-        ).unwrap()
-    )
+    return unsafe_perform_io(cat_io.lash(lambda _: IOSuccess({'file': settings.default_cat})).map(_['file']).unwrap())

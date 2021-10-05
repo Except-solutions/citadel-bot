@@ -5,7 +5,7 @@ x-restart-policy: &restart_policy
 
 services:
   mongo:
-    image: mongo
+    image: "mongo:latest"
     ports:
       - "27017:27017"
     environment:
@@ -22,7 +22,7 @@ services:
     volumes:
       - .:/app
     env_file:
-      .env
+      ./config/.env
     depends_on:
       - mongo
     command: bash -c "python server/app.py"

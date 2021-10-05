@@ -1,8 +1,8 @@
 from random import randint
 
 import httpx
-from lambdas import _
 from more_itertools import first
+from placeholder import _
 from returns.future import future_safe
 from returns.io import IOResult, IOSuccess
 from returns.pipeline import flow
@@ -32,14 +32,14 @@ async def _get_random_boobs() -> IOResult[list[dict[str, str]], Exception]:
 async def get_random_boobs() -> str:
     io_boobs = await _get_random_boobs()
     return unsafe_perform_io(
-        io_boobs.lash(
-            lambda _: IOSuccess([{'preview': DEFAULT_PIC}])
-        ).map(
+        io_boobs.lash(lambda _: IOSuccess([{'preview': DEFAULT_PIC}]))
+        .map(
             lambda result: flow(
                 result,
                 first,
                 _['preview'],
                 lambda preview: f'http://media.oboobs.ru/{preview}',
             )
-        ).unwrap()
+        )
+        .unwrap()
     )
