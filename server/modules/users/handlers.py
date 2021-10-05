@@ -14,7 +14,7 @@ async def register_user_handler(event: types.Message) -> None:
     await unsafe_perform_io(
         io_create_result.map(pipe(
             lambda user: f'@{user.username} Успешно зарегестрирован!',
-            lambda reply_text: event.reply(
+            lambda reply_text: event.answer(
                 reply_text,
                 reply_markup=start_kb,
             )

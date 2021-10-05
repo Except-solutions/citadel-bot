@@ -27,7 +27,9 @@ ROLL_TXT: str = 'ROLL 🤘'
 roll_btn: KeyboardButton = KeyboardButton(ROLL_TXT)
 roll_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(selective=True)
 
-roll_kb.row(KeyboardButton('🎲'), KeyboardButton('🎯'), KeyboardButton('⚽'), KeyboardButton('🎰'))
+NUMBER_RANGE_ROLL_TXT: str = '111111-999999 ⁉️'
+number_range_btn: KeyboardButton = KeyboardButton(NUMBER_RANGE_ROLL_TXT)
+roll_kb.row(KeyboardButton('🎲'), number_range_btn)
 roll_kb.row(back_to_start_btn)
 
 FOTD_TXT: str = 'Пидор дня 👨‍❤️‍👨'
