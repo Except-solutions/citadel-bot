@@ -16,5 +16,5 @@ WORKDIR /app
 ENV PYTHONPATH /app
 
 # Install requiremets:
-RUN poetry export --dev -f requirements.txt --output requirements.txt && \
+RUN poetry export --dev --without-hashes -f requirements.txt --output requirements.txt && \
     pip install --no-cache-dir -r requirements.txt
